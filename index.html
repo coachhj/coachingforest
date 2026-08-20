@@ -45,25 +45,7 @@
 
   a{ color: inherit; text-decoration: none; }
 
-  /* ---------- Texture: dotted crosshair, ambient ---------- */
-  .crosshair{
-    position:absolute;
-    pointer-events:none;
-    opacity:.55;
-  }
-  .crosshair::before,
-  .crosshair::after{
-    content:"";
-    position:absolute;
-    background-image: linear-gradient(to right, var(--forest-700) 1.5px, transparent 1.5px);
-    background-size: 8px 1.5px;
-  }
-  .crosshair::before{ width:100%; height:1.5px; top:50%; left:0; }
-  .crosshair::after{
-    width:1.5px; height:100%; left:50%; top:0;
-    background-image: linear-gradient(to bottom, var(--forest-700) 1.5px, transparent 1.5px);
-    background-size: 1.5px 8px;
-  }
+  /* dotted crosshair removed per request */
 
   /* ---------- Top Nav ---------- */
   .topbar{
@@ -105,13 +87,8 @@
     position: relative;
     max-width: 1040px;
     margin: 0 auto;
-    padding: 54px 24px 110px;
+    padding: 54px 24px 33px;
     text-align: center;
-  }
-  .hero .crosshair{
-    width: 480px; height: 480px;
-    left: 50%; top: 56%;
-    transform: translate(-50%,-50%);
   }
   .kicker{
     font-family: var(--serif-en);
@@ -144,54 +121,17 @@
 
   .hero-figure{
     position: relative;
-    max-width: 300px;
+    max-width: 560px;
     margin: 0 auto;
   }
   .hero-figure img{
     width: 100%;
     display:block;
-    filter: drop-shadow(0 18px 28px rgba(36,53,42,.22));
+    filter: drop-shadow(0 18px 30px rgba(36,53,42,.22));
   }
-  .hero-tag{
-    position:absolute;
-    right: -108px;
-    top: 40%;
-    text-align:left;
-    font-size: 13px;
-    color: var(--forest-700);
-  }
-  .hero-tag strong{
-    display:block;
-    font-family: var(--serif-kr);
-    font-size: 17px;
-    color: var(--forest-900);
-    margin-bottom: 2px;
-  }
-  @media (max-width: 720px){
-    .hero-tag{ position:static; margin-top: 18px; text-align:center; }
-  }
+  /* hero-tag removed per request */
 
-  .scroll-cue{
-    margin-top: 56px;
-    font-size: 12px;
-    letter-spacing: .12em;
-    color: var(--forest-700);
-    opacity: .75;
-  }
-  .scroll-cue::after{
-    content:"";
-    display:block;
-    width:1px; height:34px;
-    margin: 10px auto 0;
-    background: linear-gradient(var(--forest-700), transparent);
-    animation: dropline 2.2s ease-in-out infinite;
-  }
-  @keyframes dropline{
-    0%{ transform: scaleY(0); transform-origin: top; opacity:0;}
-    40%{ transform: scaleY(1); transform-origin: top; opacity:1;}
-    60%{ transform: scaleY(1); transform-origin: bottom; opacity:1;}
-    100%{ transform: scaleY(0); transform-origin: bottom; opacity:0;}
-  }
+  /* scroll cue removed per request */
 
   /* ---------- Trail (signature connective element) ---------- */
   .trail-wrap{
@@ -200,18 +140,7 @@
     margin: 0 auto;
     padding: 0 24px;
   }
-  .trail-line{
-    position: absolute;
-    left: 46px;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background-image: linear-gradient(var(--forest-700) 40%, transparent 0%);
-    background-size: 2px 12px;
-    background-repeat: repeat-y;
-    opacity: .4;
-  }
-  @media (max-width: 720px){ .trail-line{ display:none; } }
+  /* vertical dotted trail line removed per request */
 
   /* ---------- Sections ---------- */
   section.stop{
@@ -224,6 +153,10 @@
   @media (max-width: 720px){
     section.stop{ padding: 70px 22px 20px; }
   }
+
+  /* tighten the specific gap between hero and the first (profile) section */
+  #coach.stop{ padding-top: 40px; }
+  #coach.stop .stop-marker{ top: 44px; }
 
   .stop-marker{
     position:absolute;
@@ -251,6 +184,19 @@
     color: var(--forest-900);
     margin: 0 0 8px;
   }
+  .cred-badge{
+    display: inline-block;
+    vertical-align: middle;
+    font-family: var(--sans-kr);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--gold-deep);
+    background: rgba(217,164,65,.15);
+    border-radius: 999px;
+    padding: 4px 12px;
+    margin-left: 8px;
+  }
+
   .stop-sub{
     color: var(--forest-700);
     font-size: 15px;
@@ -291,6 +237,11 @@
     font-size: 22px;
     color: var(--forest-900);
     margin: 0 0 4px;
+  }
+  .coach-contact{
+    font-size: 13px;
+    color: var(--forest-700);
+    margin: 0 0 10px;
   }
   .coach-role{
     font-size: 13px;
@@ -350,6 +301,115 @@
     line-height: 1.7;
     color: var(--forest-700);
     margin:0;
+  }
+
+  .card-grid-2{
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+  @media (max-width: 640px){ .card-grid-2{ grid-template-columns: 1fr; } }
+
+  .card-grid-4{
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+  @media (max-width: 640px){ .card-grid-4{ grid-template-columns: 1fr; } }
+
+  /* Certification groups */
+  .cert-groups{
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+  @media (max-width: 640px){ .cert-groups{ grid-template-columns: 1fr; } }
+  .cert-group{
+    background: var(--cream);
+    border: 1px solid var(--cream-line);
+    border-radius: 18px;
+    padding: 28px 26px;
+  }
+  .cert-group .num{
+    font-family: var(--serif-en);
+    font-style: italic;
+    color: var(--gold);
+    font-size: 22px;
+    display:block;
+    margin-bottom: 8px;
+  }
+  .cert-group h3{
+    font-family: var(--serif-kr);
+    font-size: 18px;
+    margin: 0 0 16px;
+    color: var(--forest-900);
+  }
+  .cert-group ul{
+    margin:0;
+    padding:0;
+    list-style:none;
+  }
+  .cert-group li{
+    font-size: 14px;
+    color: var(--ink);
+    padding: 11px 0;
+    border-top: 1px dashed var(--line);
+    display:flex;
+    align-items:center;
+    gap: 10px;
+  }
+  .cert-group li:first-of-type{ border-top:none; }
+  .cert-group li::before{
+    content:"";
+    width: 6px; height:6px;
+    border-radius:50%;
+    background: var(--gold);
+    flex-shrink:0;
+  }
+
+  /* Multi-book list (저서) */
+  .book-item{
+    display:grid;
+    grid-template-columns: 200px 1fr;
+    gap: 34px;
+    align-items:start;
+  }
+  .book-item + .book-item{ margin-top: 26px; }
+  .book-item.no-image{
+    grid-template-columns: 1fr;
+  }
+  @media (max-width: 640px){
+    .book-item{ grid-template-columns: 1fr; text-align:center; }
+  }
+  .book-item .book-cover{
+    background: transparent;
+    padding: 0;
+  }
+  .book-item .book-cover img{
+    width: 100%;
+    filter: drop-shadow(0 14px 22px rgba(36,53,42,.28));
+  }
+  .book-badge{
+    display:inline-block;
+    font-size: 11.5px;
+    font-weight: 700;
+    color: var(--gold-deep);
+    background: rgba(217,164,65,.15);
+    border-radius: 999px;
+    padding: 4px 12px;
+    margin-bottom: 10px;
+  }
+  .book-tags{
+    font-size: 12.5px;
+    color: var(--forest-700);
+    margin: 0 0 10px;
+  }
+  .book-highlight{
+    font-size: 13.5px;
+    color: var(--forest-900);
+    font-weight: 600;
+    margin: 14px 0 0;
+    line-height: 1.7;
   }
 
   /* Steps for certification */
@@ -479,36 +539,33 @@
   <div class="topbar">
     <nav class="nav-pills" id="nav">
       <a href="#coach" data-target="coach">최현정 코치</a>
+      <a href="#personal" data-target="personal">개인 코칭</a>
       <a href="#mentoring" data-target="mentoring">멘토 코칭</a>
+      <a href="#forest" data-target="forest">숲코칭</a>
       <a href="#lecture" data-target="lecture">코칭 강의</a>
-      <a href="#certification" data-target="certification">코칭 자격 지원</a>
-      <a href="#book" data-target="book">코칭 저술</a>
+      <a href="#certification" data-target="certification">자격 지원</a>
+      <a href="#book" data-target="book">저서</a>
     </nav>
   </div>
 
   <!-- HERO -->
-  <header class="hero">
-    <div class="crosshair"></div>
+  <header class="hero" id="top">
     <p class="kicker">CoachingForest</p>
     <h1 class="wordmark">코칭포레</h1>
     <p class="tagline">Fun <span>·</span> Free <span>·</span> Forest</p>
 
     <div class="hero-figure">
-      <img src="images/character.webp" alt="코칭포레 캐릭터 일러스트">
-      <div class="hero-tag"><strong>대표 코치</strong>최현정</div>
+      <img src="images/hero.webp" alt="코칭포레 대표 이미지">
     </div>
-
-    <p class="scroll-cue">SCROLL</p>
   </header>
 
   <div class="trail-wrap">
-    <div class="trail-line"></div>
 
     <!-- 최현정 코치 -->
     <section class="stop" id="coach">
       <div class="stop-marker"></div>
       <p class="eyebrow">Profile</p>
-      <h2 class="stop-title">최현정 코치</h2>
+      <h2 class="stop-title">최현정 코치 <span class="cred-badge">KSC · PCC</span></h2>
       <p class="stop-sub">사람을 향한 질문으로 변화를 함께 만드는 코칭포레의 대표 코치입니다.</p>
 
       <div class="panel coach-grid">
@@ -517,6 +574,7 @@
         </div>
         <div>
           <p class="coach-name">최현정</p>
+          <p class="coach-contact">연락처: 카카오채널 '코칭포레'</p>
           <p class="coach-role">CoachingForest 대표 코치</p>
           <p class="coach-bio">
             멘토 코칭과 코칭 강의, 자격 인증 지원을 통해 코치로 성장하는 여정을 함께합니다.
@@ -531,6 +589,27 @@
             <span>자격 인증 지원</span>
             <span>저서 「사례로 익히는 실전 코칭」</span>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 개인 코칭 -->
+    <section class="stop" id="personal">
+      <div class="stop-marker"></div>
+      <p class="eyebrow">Personal Coaching</p>
+      <h2 class="stop-title">개인 코칭</h2>
+      <p class="stop-sub">삶의 방향과 성과, 두 가지 축에서 필요에 맞는 코칭을 제공합니다.</p>
+
+      <div class="card-grid-2">
+        <div class="card">
+          <span class="num">01</span>
+          <h3>라이프 코칭</h3>
+          <p>일과 관계, 삶의 균형과 방향을 스스로 찾아가도록 돕는 코칭입니다.</p>
+        </div>
+        <div class="card">
+          <span class="num">02</span>
+          <h3>비즈니스 코칭</h3>
+          <p>리더십과 성과, 조직 안에서의 성장 과제를 함께 다루는 코칭입니다.</p>
         </div>
       </div>
     </section>
@@ -561,6 +640,33 @@
       </div>
     </section>
 
+    <!-- 숲코칭 -->
+    <section class="stop" id="forest">
+      <div class="stop-marker"></div>
+      <p class="eyebrow">Forest Coaching</p>
+      <h2 class="stop-title">숲코칭</h2>
+      <p class="stop-sub">숲이라는 공간이 열어주는 감각과 여백으로 코칭을 확장합니다.</p>
+
+      <div class="card-grid-4">
+        <div class="card">
+          <span class="num">01</span>
+          <h3>코치들의 숲 나들이</h3>
+        </div>
+        <div class="card">
+          <span class="num">02</span>
+          <h3>오감을 사용하는 신선한 자각</h3>
+        </div>
+        <div class="card">
+          <span class="num">03</span>
+          <h3>깊은 내면의 울림</h3>
+        </div>
+        <div class="card">
+          <span class="num">04</span>
+          <h3>산림 전문가가 사용하는 숲코칭 방법</h3>
+        </div>
+      </div>
+    </section>
+
     <!-- 코칭 강의 -->
     <section class="stop" id="lecture">
       <div class="stop-marker"></div>
@@ -571,77 +677,96 @@
       <div class="card-grid">
         <div class="card">
           <span class="num">A</span>
-          <h3>코칭 입문</h3>
-          <p>코칭의 철학과 기본 대화 구조를 익히는 입문 과정입니다.</p>
+          <h3>코칭 기초</h3>
+          <p>코칭의 철학과 기본 대화 구조를 익히는 기초 과정입니다.</p>
         </div>
         <div class="card">
           <span class="num">B</span>
-          <h3>핵심역량 실습</h3>
-          <p>사례 중심의 실습으로 코칭 핵심역량을 몸에 익히는 과정입니다.</p>
+          <h3>코칭 심화</h3>
+          <p>사례 중심의 실습으로 코칭 핵심역량을 깊이 있게 다지는 과정입니다.</p>
         </div>
         <div class="card">
           <span class="num">C</span>
-          <h3>현장 적용</h3>
-          <p>조직과 개인, 각 현장에 맞게 코칭을 적용하는 방법을 다룹니다.</p>
+          <h3>코치의 반응훈련</h3>
+          <p>실제 세션에서 즉각적으로 반응하는 힘을 기르는 훈련 과정입니다.</p>
         </div>
       </div>
     </section>
 
-    <!-- 코칭 자격 지원 -->
+    <!-- 자격 지원 -->
     <section class="stop" id="certification">
       <div class="stop-marker"></div>
       <p class="eyebrow">Certification Support</p>
-      <h2 class="stop-title">코칭 자격 지원</h2>
-      <p class="stop-sub">자격 취득 과정에서 막히기 쉬운 지점마다 실질적인 도움을 드립니다.</p>
+      <h2 class="stop-title">자격 지원</h2>
+      <p class="stop-sub">한국코치협회와 ICF, 두 자격 체계에 맞춘 준비 과정을 지원합니다.</p>
 
-      <div class="panel steps">
-        <div class="step">
-          <span class="step-num">01</span>
-          <div>
-            <h4>서류 및 요건 점검</h4>
-            <p>자격별 요구 요건과 준비 서류를 함께 확인하고 정리합니다.</p>
-          </div>
+      <div class="cert-groups">
+        <div class="cert-group">
+          <span class="num">01</span>
+          <h3>한국코치협회</h3>
+          <ul>
+            <li>멘토 코칭</li>
+            <li>코치더코치</li>
+          </ul>
         </div>
-        <div class="step">
-          <span class="step-num">02</span>
-          <div>
-            <h4>세션 녹취 리뷰</h4>
-            <p>제출용 코칭 세션을 함께 듣고, 평가 기준에 맞춰 다듬어갑니다.</p>
-          </div>
-        </div>
-        <div class="step">
-          <span class="step-num">03</span>
-          <div>
-            <h4>구술 시험 대비</h4>
-            <p>실전과 유사한 형태로 구술 평가를 연습하고 피드백을 드립니다.</p>
-          </div>
+        <div class="cert-group">
+          <span class="num">02</span>
+          <h3>ICF 국제코칭연맹</h3>
+          <ul>
+            <li>PCC 포트폴리오 과정</li>
+            <li>PCC 멘토코칭</li>
+            <li>PCC MCS 과정</li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <!-- 코칭 저술 -->
+    <!-- 저서 -->
     <section class="stop" id="book">
       <div class="stop-marker"></div>
       <p class="eyebrow">Writing</p>
-      <h2 class="stop-title">코칭 저술</h2>
+      <h2 class="stop-title">저서</h2>
       <p class="stop-sub">현장의 사례를 담은 책으로, 코칭을 배우는 과정을 더 가까이에서 안내합니다.</p>
 
-      <div class="panel book-grid">
-        <div class="book-cover">
-          <img src="images/book.webp" alt="사례로 익히는 실전 코칭 제2판 표지">
+      <div class="panel">
+        <div class="book-item">
+          <div class="book-cover">
+            <img src="images/book-nobg.webp" alt="사례로 익히는 실전 코칭 표지">
+          </div>
+          <div>
+            <p class="book-title">사례로 익히는 실전 코칭</p>
+            <p class="book-meta">저자 · 임현희, 최현정 지음</p>
+            <p class="book-desc">
+              한국코치협회 핵심 역량과 흐름을 사례로 쉽고 명확하게 풀이해 바탕을 마련하고,
+              실전코칭을 위한 주제별 코칭 사례를 예시하였다. 코치 자격 준비를 위한 KAC와
+              KPC·KSC 심사항목을 반영한 사례 및 심사항목과의 매칭표, 항목별 구현 방식 등을
+              제시하였다.
+            </p>
+            <p class="book-highlight">
+              실전과 자격을 위한 한국코치협회 코치들 사이에 '노란 책'으로 불리는 그 책.<br>
+              2023년 출간 후 1판 1, 2, 3쇄에 이어 2026년 KAC, KPC, KSC 심사항목을 반영한
+              2판 출간
+            </p>
+          </div>
         </div>
-        <div>
-          <p class="book-title">사례로 익히는 실전 코칭 (제2판)</p>
-          <p class="book-meta">핵심역량부터 자격인증까지</p>
-          <p class="book-desc">
-            실제 코칭 현장의 사례를 따라가며 핵심역량을 익히고, 자격 인증까지 준비할 수 있도록
-            구성한 책입니다. 이론과 실습 사이의 간극을 사례로 채워, 코칭을 배우는 이들의
-            든든한 동반자가 되어줍니다.
-          </p>
-          <p class="book-info">
-            저자 · 임현희, 최현정<br>
-            출판 · 북코리아
-          </p>
+
+        <div class="book-item no-image">
+          <div>
+            <span class="book-badge">근간</span>
+            <p class="book-title">미국 코치 한국 코치가 함께 쓴 PCC 가이드</p>
+            <p class="book-tags">ICF 핵심역량 · MSR · 마커 · MCS · 실기 · 필기시험 · 로드맵</p>
+            <p class="book-meta">저자 · 최현정, Julia Lee 지음</p>
+            <p class="book-desc">
+              ICF가 요구하는 PCC 기준의 본질을 짚어 코칭에 구현하도록 돕는 실전 안내서.
+              미국·한국 코치가 공동 집필한 이 책은 자격 취득을 넘어, 세계 어디서나 통하는
+              전문 코치의 역량을 갖추는 길을 제시한다. 최신 ICF 역량과 최소 기술요건(MSR),
+              PCC 마커 분석, 필기시험 방법론과 예시, 취득 절차를 담았다.
+            </p>
+            <p class="book-highlight">
+              PCC 취득은 물론 코칭 역량 향상과 MCS 멘토코칭 준비·실무 적용에 유용한 종합
+              지침서
+            </p>
+          </div>
         </div>
       </div>
     </section>
@@ -651,7 +776,7 @@
     <div class="cta-inner">
       <h3>코칭포레와 함께, 다음 걸음을 시작해보세요</h3>
       <p>멘토 코칭부터 자격 인증까지, 코치로 성장하는 모든 여정을 함께합니다.</p>
-      <a class="cta-btn" href="#coach">코치 소개 보기</a>
+      <a class="cta-btn" href="#top">맨 위로</a>
     </div>
   </div>
 
